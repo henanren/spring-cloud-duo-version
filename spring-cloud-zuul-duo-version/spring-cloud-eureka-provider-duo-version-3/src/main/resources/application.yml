@@ -1,0 +1,18 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: eureka-provider
+
+server:
+  port: 8083
+  
+  
+gray:
+  client:
+    instance:
+      grayEnroll: true #是否在启动后自动注册成灰度实例
+    serverUrl: http://localhost:20202 #灰度服务端的url

@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: zuul-service
+
+server:
+  port: 9000
+
+#zuul:
+#  routes:
+#    blog:
+#        path: /ymq/**
+#        url: http://www.ymq.io/about
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+zuul:
+  prefix: /gateway #为zuul设置一个公共的前缀
+  routes:
+    api:
+        path: /api/**
+        serviceId: eureka-provider
+    api2:
+        path: /api2/**
+        serviceId: eureka-provider2    
+
+
+gray:
+  client:
+    server-url: http://localhost:20202 #灰度服务端的url
+    instance:
+      use-multi-version: true        
+        
