@@ -47,11 +47,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>cn.springcloud.gray</groupId>
-			<artifactId>spring-cloud-starter-gray</artifactId>
-			 <version>1.0.2</version>
-		</dependency>
+		 <dependency>
+            <groupId>cn.springcloud.gray</groupId>
+            <artifactId>spring-cloud-starter-multi-version</artifactId>
+             <version>1.0.2</version>
+        </dependency>
     </dependencies>
 
 	<dependencyManagement>

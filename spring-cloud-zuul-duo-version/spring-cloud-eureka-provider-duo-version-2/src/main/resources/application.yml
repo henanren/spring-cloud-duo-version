@@ -1,18 +1,34 @@
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-
 spring:
   application:
-    name: eureka-provider
-
+    name: service-b
 server:
-  port: 8082
-  
-  
-gray:
+  port: 10102
+eureka:
   client:
-    instance:
-      grayEnroll: false #是否在启动后自动注册成灰度实例
-    serverUrl: http://localhost:20202 #灰度服务端的url
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:10001/eureka/
+  instance:
+    instanceId: ${spring.application.name}:${server.port}
+    metadata-map:
+     versions: 1,2
+
+feign:
+  hystrix:
+    enabled: true
+
+ribbon:
+    ReadTimeout: 60000
+    ConnectTimeout: 60000
+    eureka:
+        enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 60000

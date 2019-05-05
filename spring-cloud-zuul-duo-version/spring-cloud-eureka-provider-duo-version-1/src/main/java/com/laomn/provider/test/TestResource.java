@@ -1,4 +1,4 @@
-package com.laomn.provider;
+package com.laomn.provider.test;
 
 import com.google.common.collect.ImmutableMap;
 import org.apache.commons.lang.StringUtils;
@@ -23,5 +23,13 @@ public class TestResource {
         return ImmutableMap.of("test", "success.", "version", StringUtils.defaultIfEmpty(version, ""), "serverPort", env.getProperty("server.port"));
     }
 
+
+    @RequestMapping(value = "/post", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, String> testPost(@RequestParam(value = "version", required = false) String version, @RequestBody String body) {
+        return ImmutableMap.of(
+                "test", "success.", "version", StringUtils.defaultIfEmpty(version, ""),
+                "serverPort", env.getProperty("server.port"), "body", body);
+    }
 
 }
